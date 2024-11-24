@@ -1,6 +1,7 @@
 import reflex as rx
 from ..model.datos_chat_app import datos_chat
-
+from .components.input_box import input_box
+from .components.button import button
 #Lógica de formateo de mensajes
 def qa(question:str, answer: str) -> rx.Component:
     return rx.box(
@@ -14,5 +15,9 @@ def chat():
         * [
             qa(question, answer)
             for question, answer in datos_chat()
-        ]
+        ],
+        rx.hstack(
+            input_box(),
+            button("Enviar")
+        )
     )
