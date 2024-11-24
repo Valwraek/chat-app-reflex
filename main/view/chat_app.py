@@ -27,8 +27,14 @@ def chat():
            lambda messages: qa(messages[0], messages[1]),
         ),
         rx.hstack(
-            input_box(),
+            rx.input(
+            placeholder="Haz tu pregunta",
+            on_change=sqa.set_question,
+            style= cs.input_style,
+            ),
             button("Enviar", on_click=sqa.answer),
             align="center",
-        )
+            position="sticky",
+        ),
+        position="sticky",
     )
