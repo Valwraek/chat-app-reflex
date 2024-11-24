@@ -1,5 +1,5 @@
 import reflex as rx
-from model.datos_chat_app import datos_chat
+from ..model.datos_chat_app import datos_chat
 
 #Lógica de formateo de mensajes
 def qa(question:str, answer: str) -> rx.Component:
@@ -13,6 +13,6 @@ def chat():
     return rx.box(
         * [
             qa(question, answer)
-            for question, answer in datos_chat
+            for question, answer in datos_chat()
         ]
     )
