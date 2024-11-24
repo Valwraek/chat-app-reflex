@@ -2,12 +2,20 @@ import reflex as rx
 from ..model.datos_chat_app import datos_chat
 from .components.input_box import input_box
 from .components.button import button
+from .styles import chat_style as cs
 #Lógica de formateo de mensajes
 def qa(question:str, answer: str) -> rx.Component:
     return rx.box(
-        rx.box(question, text_align="right"),
-        rx.box(answer, text_align="left"),
+        rx.box(
+            rx.text(question, style=cs.question_style),
+            text_align="right",
+        ),
+        rx.box(
+            rx.text(answer, style=cs.answer_style),
+            text_align="left",
+        ),
         margin_y="1em",
+        width="100%",
     )
 
 def chat():
@@ -18,6 +26,7 @@ def chat():
         ],
         rx.hstack(
             input_box(),
-            button("Enviar")
+            button("Enviar"),
+            align="center",
         )
     )
