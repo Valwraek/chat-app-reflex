@@ -1,5 +1,4 @@
 import reflex as rx
-from ..model.datos_chat_app import datos_chat
 from .components.input_box import input_box
 from .components.button import button
 from .styles import chat_style as cs
@@ -27,11 +26,7 @@ def chat():
            lambda messages: qa(messages[0], messages[1]),
         ),
         rx.hstack(
-            rx.input(
-            placeholder="Haz tu pregunta",
-            on_change=sqa.set_question,
-            style= cs.input_style,
-            ),
+            input_box(),
             button("Enviar", on_click=sqa.answer),
             align="center",
             position="sticky",
