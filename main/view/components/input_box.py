@@ -5,7 +5,10 @@ def input_box() -> rx.Component:
     return (
         rx.input(
             placeholder="Haz tu pregunta",
+            value=sqa.question,
             on_change=sqa.set_question,
+            on_key_down=sqa.handle_key_down,
+            autofocus=True,
             style= cs.input_style,
             ),       
     )

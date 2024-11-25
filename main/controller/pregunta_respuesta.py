@@ -9,6 +9,11 @@ class State_qa(rx.State):
     question: str
     chat_history: list[tuple[str, str]]
 
+    async def handle_key_down(self, key: str):
+        if key == "Enter":
+            async for _ in self.answer():
+                yield
+
     async def answer(self):
         client = AsyncOpenAI(
             api_key=os.getenv("OPENAI_API_KEY")
