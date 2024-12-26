@@ -1,18 +1,17 @@
 import reflex as rx
 from .components.input_box import input_box
 from .components.button import button
-from .styles import chat_style as cs
 from ..controller.pregunta_respuesta import State_qa as sqa
 
 #Lógica de formateo de mensajes
 def qa(question:str, answer: str) -> rx.Component:
     return rx.box(
         rx.box(
-            rx.text(question, style=cs.question_style),
+            rx.text(question, class_name="question"),
             text_align="right",
         ),
         rx.box(
-            rx.text(answer, style=cs.answer_style),
+            rx.text(answer, class_name="answer"),
             text_align="left",
         ),
         margin_y="1em",
@@ -21,15 +20,18 @@ def qa(question:str, answer: str) -> rx.Component:
 
 def chat():
     return rx.box(
-        rx.foreach (
-           sqa.chat_history,
-           lambda messages: qa(messages[0], messages[1]),
-        ),
-        rx.hstack(
+        rx.box(
+            rx.box(
+                rx.foreach (
+                sqa.chat_history,
+                lambda messages: qa(messages[0], messages[1]),
+                ),
+                class_name="caja-pregunta-respuesta",    
+            ),
+            
             input_box(),
-            button("Enviar", on_click=sqa.answer),
-            align="center",
-            position="sticky",
+            class_name="caja-input-historial",
+            ),
+            
         ),
-        position="sticky",
-    )
+    
