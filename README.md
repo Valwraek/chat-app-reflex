@@ -52,6 +52,13 @@ El paso 2 y el paso 3 difieren en Linux. Los comandos para crear un entorno virt
 - **``python3 -m venv .venv``** con este comando se crea el entorno virtual.  
 - **``source .venv/bin/activate``** con este se activará el entorno virtual.  
 
+5. Ahora crearemos la carpeta **``.env``** en la carpeta principal para alojar nuestra api de openai para hacer la conexión.
+    - Ahora crearemos dentro de este archivo una variable con el nombre **``OPENAI_API_KEY ="aqui irá el api"``**
+
+Si no tenemos la api la aplicación no funcionará.
+
+![Imagen de la api](/assets/img-readme/instalacion-paso-api.png)
+
 ## Uso
 ### Ejecutar la aplicación
 
